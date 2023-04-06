@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class Movement : MonoBehaviour
 {
-    [SerializeField] float _speed;
-
+    private const string _runingAnimationName = "IsRuning";
+    [SerializeField] private float _speed;
     private Animator _animator;
     private float normalYRotation;
 
@@ -15,24 +17,23 @@ public class Movement : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKey(KeyCode.A))
         {
-            _animator.SetBool("IsRuning", Input.GetKey(KeyCode.A));
+            _animator.SetBool(_runingAnimationName, Input.GetKey(KeyCode.A));
             transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y - 180, transform.rotation.z, transform.rotation.w);
             transform.position = new Vector2(transform.position.x - _speed * Time.deltaTime, transform.position.y);
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            _animator.SetBool("IsRuning", Input.GetKey(KeyCode.D));
+            _animator.SetBool(_runingAnimationName, Input.GetKey(KeyCode.D));
             transform.rotation = new Quaternion(transform.rotation.x, normalYRotation, transform.rotation.z, transform.rotation.w);
             transform.position = new Vector2(transform.position.x + _speed * Time.deltaTime, transform.position.y);
         }
         else
         {
-            _animator.SetBool("IsRuning", false);
+            _animator.SetBool(_runingAnimationName, false);
         }
     }
 }
