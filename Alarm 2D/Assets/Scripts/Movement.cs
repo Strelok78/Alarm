@@ -6,8 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Movement : MonoBehaviour
 {
-    private const string _runingAnimationName = "IsRuning";
+    private const string RuningAnimationName = "IsRuning";
+
     [SerializeField] private float _speed;
+
     private Animator _animator;
     private float normalYRotation;
 
@@ -21,19 +23,19 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            _animator.SetBool(_runingAnimationName, Input.GetKey(KeyCode.A));
+            _animator.SetBool(RuningAnimationName, Input.GetKey(KeyCode.A));
             transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y - 180, transform.rotation.z, transform.rotation.w);
             transform.position = new Vector2(transform.position.x - _speed * Time.deltaTime, transform.position.y);
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            _animator.SetBool(_runingAnimationName, Input.GetKey(KeyCode.D));
+            _animator.SetBool(RuningAnimationName, Input.GetKey(KeyCode.D));
             transform.rotation = new Quaternion(transform.rotation.x, normalYRotation, transform.rotation.z, transform.rotation.w);
             transform.position = new Vector2(transform.position.x + _speed * Time.deltaTime, transform.position.y);
         }
         else
         {
-            _animator.SetBool(_runingAnimationName, false);
+            _animator.SetBool(RuningAnimationName, false);
         }
     }
 }
