@@ -29,12 +29,9 @@ public class Alarm : MonoBehaviour
             _audioSource.Play();
             _animator.SetBool(AlarmAnimationName, alarmStatus);
 
-            while (_currentVolume != _maxVolume)
-            {
-                _currentVolume = Mathf.MoveTowards(_currentVolume, _maxVolume, _volumeStep * Time.deltaTime);
-                _audioSource.volume = _currentVolume;
-                yield return waiter;
-            }
+            //play stop and animation to an extra method
+            ChangeVolume(_maxVolume);
+            yield return waiter;
         }
         else
         {
@@ -50,6 +47,15 @@ public class Alarm : MonoBehaviour
                 _audioSource.Stop();
                 _animator.SetBool(AlarmAnimationName, alarmStatus);
             }
+        }
+    }
+
+    private void ChangeVolume(float targetVolume)
+    {
+        while (_currentVolume != targetVolume)
+        {
+            _currentVolume = Mathf.MoveTowards(_currentVolume, targetVolume, _volumeStep * Time.deltaTime);
+            _audioSource.volume = _currentVolume;            
         }
     }
 }

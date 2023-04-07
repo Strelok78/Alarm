@@ -1520,11 +1520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71464805924d0f848be4faa27c0259b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 0
   _audioSource: {fileID: 1247018210}
-  _gameObject: {fileID: 0}
   _volumeStep: 0.5
   _maxVolume: 1
   _minVolume: 0
@@ -1576,6 +1572,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f589df33b8342094cacf05161e0c1747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1407362435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1695,7 +1694,7 @@ GameObject:
   - component: {fileID: 1409813051}
   - component: {fileID: 1409813052}
   - component: {fileID: 1409813053}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Samurai
   m_TagString: Untagged
   m_Icon: {fileID: 0}

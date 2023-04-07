@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Alarm))]
-public class CollisionController : MonoBehaviour
+public class EntrenceVerifier : MonoBehaviour
 {
+    [SerializeField] private LayerMask _layerMask;
+
     private Alarm _alarm;
     private Coroutine _alarmingCoroutine;
     private bool _isCollided;
@@ -16,14 +18,20 @@ public class CollisionController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _isCollided = true;
-        UpdateAlarmCoroutine();
+        if(collision.gameObject.layer == _layerMask)
+        {
+            _isCollided = true;
+            UpdateAlarmCoroutine();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _isCollided = false;
-        UpdateAlarmCoroutine();
+        if (collision.gameObject.layer == _layerMask)
+        {
+            _isCollided = false;
+            UpdateAlarmCoroutine();
+        }
     }
 
     private void UpdateAlarmCoroutine()
