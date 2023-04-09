@@ -1,46 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-[RequireComponent(typeof(Alarm))]
+
 public class EntrenceVerifier : MonoBehaviour
 {
     [SerializeField] private LayerMask _layerMask;
-
-    private Alarm _alarm;
-    private Coroutine _alarmingCoroutine;
-    private bool _isCollided;
-
-    private void Awake()
-    {
-        _alarm = GetComponent<Alarm>();
-    }
+    [SerializeField] private UnityEvent _entered;
+    [SerializeField] private UnityEvent _left;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == _layerMask)
-        {
-            _isCollided = true;
-            UpdateAlarmCoroutine();
-        }
+        //if(collision.gameObject.layer == _layerMask)
+        //{
+        _entered.Invoke();        
+        //}
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == _layerMask)
-        {
-            _isCollided = false;
-            UpdateAlarmCoroutine();
-        }
-    }
-
-    private void UpdateAlarmCoroutine()
-    {
-        if (_alarmingCoroutine != null)
-        {
-            StopCoroutine(_alarmingCoroutine);
-        }
-
-        _alarmingCoroutine = StartCoroutine(_alarm.Alarming(_isCollided));
+        //if (collision.gameObject.layer == _layerMask)
+        //{
+        _left.Invoke();
+        //}
     }
 }
