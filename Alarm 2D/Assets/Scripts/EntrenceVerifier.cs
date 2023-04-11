@@ -8,12 +8,13 @@ public class EntrenceVerifier : MonoBehaviour
 {
     private const string EnemyLayer = "Enemy";
 
+    [SerializeField] private LayerMask _layerMask;
     [SerializeField] private UnityEvent _entered;
     [SerializeField] private UnityEvent _left;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer(EnemyLayer))
+        if ((_layerMask.value & (1 << collision.gameObject.layer)) == 0)
         {
             _entered.Invoke();
         }

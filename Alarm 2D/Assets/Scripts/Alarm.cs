@@ -18,7 +18,7 @@ public class Alarm : MonoBehaviour
     private Coroutine _alarmingCoroutine;
     private float _currentVolume;
 
-    private static readonly WaitForEndOfFrame Wait = new WaitForEndOfFrame();
+    private static readonly WaitForEndOfFrame _wait = new WaitForEndOfFrame();
 
     private void Awake()
     {
@@ -74,7 +74,7 @@ public class Alarm : MonoBehaviour
         {
             _currentVolume = Mathf.MoveTowards(_currentVolume, targetVolume, _volumeStep * Time.deltaTime);
             _audioSource.volume = _currentVolume;
-            yield return Wait;
+            yield return _wait;
         }
 
         TurnOffAlarm(isAlarming);
