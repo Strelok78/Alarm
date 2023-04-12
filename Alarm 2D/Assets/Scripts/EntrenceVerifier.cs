@@ -14,10 +14,9 @@ public class EntrenceVerifier : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((_layerMask.value & (1 << collision.gameObject.layer)) == 0)
-        {
+        if(collision.gameObject.TryGetComponent(Movement))
             _entered.Invoke();
-        }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
