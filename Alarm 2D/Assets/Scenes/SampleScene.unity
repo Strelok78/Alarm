@@ -1571,9 +1571,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f589df33b8342094cacf05161e0c1747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 64
   _entered:
     m_PersistentCalls:
       m_Calls:
@@ -1723,6 +1720,7 @@ GameObject:
   - component: {fileID: 1409813051}
   - component: {fileID: 1409813052}
   - component: {fileID: 1409813053}
+  - component: {fileID: 1409813054}
   m_Layer: 6
   m_Name: Samurai
   m_TagString: Untagged
@@ -1877,6 +1875,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.051911414, y: 0.11367142}
   m_EdgeRadius: 0
+--- !u!114 &1409813054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409813046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a65acabeb511da4bae63b9bd7815f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1499851771
 GameObject:
   m_ObjectHideFlags: 0
